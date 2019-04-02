@@ -1,22 +1,29 @@
 #==========================  Modules configuration ============================
 metricbeat.modules:
-- module: docker
+- module: system
   metricsets:
-    - "container"
     - "cpu"
     - "diskio"
-    - "healthcheck"
-    - "info"
-    #- "image"
     - "memory"
     - "network"
+#    - "core"
+    - "filesystem"
+    - "fsstat"
+    - "load"
+    - "process"
+    - "process_summary"
+    - "raid"
+    - "socket"
+    - "socket_summary"
+    - "uptime"
+  cpu.metrics: ["percentages"]
   hosts: []
   period: 10s
   enabled: true
 #================================ General =====================================
 fields:
   logzio_codec: json
-  type: docker-collector-metrics
+  type: host-metrics-collector
 fields_under_root: true
 #================================ Outputs =====================================
 output.logstash:
