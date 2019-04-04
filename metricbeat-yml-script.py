@@ -37,6 +37,8 @@ def _add_shipping_data():
 
     config_dic["output.logstash"]["hosts"].append(logzio_url)
     config_dic["fields"]["token"] = logzio_token
+    if "HOSTNAME" in os.environ:
+        config_dic["fields"]["system.hostName"] = os.environ["HOSTNAME"]
 
     with open(METRICBEAT_CONF_PATH, "w+") as metricbeat_yml:
         yaml.dump(config_dic, metricbeat_yml)
