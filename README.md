@@ -25,7 +25,7 @@ For a complete list of options, see the parameters below the code block.👇
 docker run --name host-metrics-collector \
 --env LOGZIO_TOKEN="<ACCOUNT-TOKEN>" \
 --env LOGZIO_URL="<LISTENER-URL>:5015" \
-logzio/docker-collector-metrics
+logzio/host-metrics-collector
 ```
 
 #### Parameters
@@ -39,3 +39,4 @@ logzio/docker-collector-metrics
 ### 3. Check Logz.io for your metrics
 
 Give your metrics a few minutes to get from your system to ours, and then open [Kibana](https://app.logz.io/#/dashboard/kibana).
+For full description of the collected metrics, see [Metricbeat documentation](https://www.elastic.co/guide/en/beats/metricbeat/current/exported-fields-system.html).
