@@ -1,13 +1,14 @@
-# host-metrics-collector
+# Logz.io Host Metrics Collector
 
-host-metrics-collector is a Docker container that uses Metricbeat to collect system metrics from the host it is running on and forward those metrics to your Logz.io account.
+Logz.io Host Metrics Collector is a Docker container that forwards system metrics from its host to your Logz.io account.
 
 To use this container, you'll set environment variables in your docker run command.
-host-metrics-collector uses those environment variables to generate a valid Metricbeat configuration for the container.
+Host Metrics Collector uses those environment variables to generate a valid Metricbeat configuration for the container.
 
-By default, host-metrics-collector ships `cpu`, `diskio`, `memory`, `network`, `filesystem`, `fsstat`, `load`, `process`, `process`, `process_summary`, `raid`, `socket`, `socket_summary`, `uptime` metrics.
+By default, Host Metrics Collector ships these metrics: \
+`cpu`, `diskio`, `filesystem`, `fsstat`, `load`, `memory`, `network`, `process_summary`, `process`, `process`, `raid`, `socket_summary`, `socket`, `uptime`
 
-## host-metrics-collector setup
+## Setup
 
 ### 1. Pull the Docker image
 
@@ -25,7 +26,7 @@ For a complete list of options, see the parameters below the code block.👇
 docker run --name host-metrics-collector \
 --env LOGZIO_TOKEN="<ACCOUNT-TOKEN>" \
 --env LOGZIO_URL="<LISTENER-URL>:5015" \
-logzio/docker-collector-metrics
+logzio/host-metrics-collector
 ```
 
 #### Parameters
@@ -34,8 +35,9 @@ logzio/docker-collector-metrics
 |---|---|
 | **LOGZIO_TOKEN** | **Required**. Your Logz.io account token. Replace `<ACCOUNT-TOKEN>` with the [token](https://app.logz.io/#/dashboard/settings/general) of the account you want to ship to. |
 | **LOGZIO_URL** | **Required**. Logz.io listener URL to ship the metrics to. This URL changes depending on the region your account is hosted in. For example, accounts in the US region ship to `listener.logz.io`, and accounts in the EU region ship to `listener-eu.logz.io`. <br /> For more information, see [Account region](https://docs.logz.io/user-guide/accounts/account-region.html) on the Logz.io Docs. |
-| **HOSTNAME** | **Optional**. Host's custom name, by default will look for an environment variable HOSTNAME.
+| **HOSTNAME** | Custom name of the host. <br /> **Default**: `HOSTNAME` environment variable
 
 ### 3. Check Logz.io for your metrics
 
-Give your metrics a few minutes to get from your system to ours, and then open [Kibana](https://app.logz.io/#/dashboard/kibana).
+Give your metrics some time to get from your system to ours, and then open [Kibana](https://app.logz.io/#/dashboard/kibana).
+For full description of the collected metrics, see [Metricbeat documentation](https://www.elastic.co/guide/en/beats/metricbeat/current/exported-fields-system.html).
