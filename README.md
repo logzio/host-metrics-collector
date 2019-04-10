@@ -1,6 +1,6 @@
 # Logz.io Host Metrics Collector
 
-Logz.io Host Metrics Collector is a Docker container that uses Metricbeat to collect system metrics from the host it is running on and forward those metrics to your Logz.io account.
+Logz.io Host Metrics Collector is a Docker container that forwards system metrics from its host to your Logz.io account.
 
 To use this container, you'll set environment variables in your docker run command.
 Host Metrics Collector uses those environment variables to generate a valid Metricbeat configuration for the container.
